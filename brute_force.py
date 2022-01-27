@@ -13,7 +13,7 @@ def brute_force(img, epoch = 20):
     for i in range(1, epoch+1):
         factor = ((1 - brightness_(img_to_array(img)/255))*i)+0.1
         pred = PIL.ImageEnhance.Brightness(img).enhance(factor)
-        pred = PIL.ImageOps.autocontrast(pred)autocontrast(pred)
+        pred = PIL.ImageOps.autocontrast(pred)
         score = brightness_(img_to_array(pred)/255)
         if score <= 0.95:
             res[score] = factor, pred
