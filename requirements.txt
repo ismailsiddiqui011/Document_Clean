@@ -3,5 +3,5 @@ streamlit
 tensorflow==2.2.0
 scikit-image
 Cython
-opencv-python
+opencv
 keras==2.3.1
