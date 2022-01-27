@@ -31,9 +31,8 @@ try:
       st.image(img, caption = 'Input', width = 256)
    except:
       st.markdown('Upload a valid image')
-
-pred = model.predict(np.expand_dims(img, 0))[0]
-pred = np.clip(pred, 0, 1)
-st.image([img, pred], caption = ['Input', 'Prediction'], width = 256)
+  pred = model.predict(np.expand_dims(img, 0))[0]
+  pred = np.clip(pred, 0, 1)
+  st.image([img, pred], caption = ['Input', 'Prediction'], width = 256)
 except:
       pass
