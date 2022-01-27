@@ -47,6 +47,7 @@ if choice == 'Upload Image':
    except:
       st.markdown('Upload a valid image')
 try:
+    status = True
     img_c = image_spoiler.image_spoiler(img, brightness, noise)
 
 
@@ -57,6 +58,7 @@ try:
     else:
       pred = model.predict(np.expand_dims(img_c, 0))[0]
       pred = np.clip(pred, 0, 1)
-   st.image([img_c, pred], caption = ['Input', 'Prediction'], width = 512)
 except:
-    pass
+    status = False
+if status:
+    st.image([img_c, pred], caption = ['Input', 'Prediction'], width = 512)
