@@ -16,6 +16,20 @@ st.title('Document Image Cleaner')
 st.image('front.png', width = 500)
 
 choice = st.selectbox('Choose one of the following', ('URL', 'Upload Image'))
+brightness = st.text_input('Enter a brightness reduction factor range(0-0.80), 0 means image is already ruined or leave the feild to use random value...')
+try:
+    brightness = float(brightness)
+except:
+    brightness = False
+    st.markdown('Enter a valid value, using random values now...')
+    
+noise = st.text_input('Enter a noise factor range(0-0.001), 0 means image is already ruined or leave the feild to use random value...')
+try:
+    noise = float(noise)
+except:
+    noise = False
+    st.markdown('Enter a valid value, using random values now...')
+    
 try:
   if choice == 'URL':
     image_path = st.text_input('Enter image URL...')
@@ -30,6 +44,7 @@ try:
       img = img_loader.img_loader(img)
    except:
       st.markdown('Upload a valid image')
+  img = image_spoiler.image_spoiler(img, brightnesse, noise)
   pred = model.predict(np.expand_dims(img, 0))[0]
   pred = np.clip(pred, 0, 1)
   st.image([img, pred], caption = ['Input', 'Prediction'], width = 256)
