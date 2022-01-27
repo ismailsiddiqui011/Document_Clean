@@ -9,8 +9,8 @@ from PIL import Image
 
 
 model = load_model('model.h5', compile = False)
-img_loader = pickle.load(open('img_loader.sav', 'rb'))
-image_spoiler = pickle.load(open('image_spoiler.sav', 'rb'))
+img_loader = pickle.load(open('img_loader.pkl', 'rb'))
+image_spoiler = pickle.load(open('image_spoiler.pkl', 'rb'))
 
 st.title('Document Image Cleaner')
 st.image('front.png', width = 500)
