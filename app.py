@@ -10,6 +10,7 @@ import image_spoiler
 import img_loader
 from skimage.transform import resize
 import brute_force
+from skimage.color import rgba2rgb
 
 model = load_model('model.h5', compile = False)
 
@@ -47,6 +48,7 @@ try:
       img = img_loader.img_loader(img)
    except:
       st.markdown('Upload a valid image')
+  img = rgba2rgb(img)
   z = img.shape
   st.markdown(str(z))
   img_c = image_spoiler.image_spoiler(img, brightness, noise)
