@@ -53,7 +53,7 @@ img_c = image_spoiler.image_spoiler(img, brightness, noise)
 if choice2 == 'Brute Force':
   img = array_to_img(img_c)
   pred, _, _ = brute_force.brute_force(img)
-  pred = img_to_array(pred)
+  pred = img_to_array(pred)/255
 else:
   pred = model.predict(np.expand_dims(img_c, 0))[0]
   pred = np.clip(pred, 0, 1)
