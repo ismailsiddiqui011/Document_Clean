@@ -5,3 +5,4 @@ scikit-image
 Cython
 opencv-python
 keras==2.3.1
+stqdm
