@@ -16,14 +16,14 @@ st.title('Document Image Cleaner')
 st.image('front.png', width = 500)
 
 choice = st.selectbox('Choose one of the following', ('URL', 'Upload Image'))
-brightness = st.text_input('Enter a brightness reduction factor range(0-0.80), 0 means image is already ruined or leave the feild to use random value...')
+brightness = st.text_input('Enter a brightness reduction factor range(0-0.80), 0 means image is already ruined or leave the field to use random value...')
 try:
     brightness = float(brightness)
 except:
     brightness = False
     st.markdown('Enter a valid value, using random values now...')
     
-noise = st.text_input('Enter a noise factor range(0-0.001), 0 means image is already ruined or leave the feild to use random value...')
+noise = st.text_input('Enter a noise factor range(0-0.001), 0 means image is already ruined or leave the field to use random value...')
 try:
     noise = float(noise)
 except:
