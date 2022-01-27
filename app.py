@@ -6,8 +6,8 @@ from tensorflow.keras.models import load_model
 import os, pickle
 from skimage.io import imread
 from PIL import Image
-from image_spoiler import image_spoiler
-from img_loader import img_loader
+import image_spoiler
+import img_loader
 
 model = load_model('model.h5', compile = False)
 
@@ -19,14 +19,14 @@ try:
   if choice == 'URL':
     image_path = st.text_input('Enter image URL...')
     try:
-      img = img_loader(image_path)
+      img = img_loader.img_loader(image_path)
     except:
       st.markdown('Enter a URL')
 
   if choice == 'Upload Image':
     img = st.file_uploader('Upload an Image')
     try:
-      img = img_loader(image_path)
+      img = img_loader.img_loader(image_path)
     except:
         st.markdown('Upload a valid image')
 
