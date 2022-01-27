@@ -26,10 +26,8 @@ try:
 
   if choice == 'Upload Image':
     img = st.file_uploader('Upload an Image')
-    try:
-      img = img_loader.img_loader(image_path)
-    except:
-        st.markdown('Upload a valid image')
+    img = img_loader.img_loader(image_path)
+    st.markdown('Upload a valid image')
 
   pred = model.predict(np.expand_dims(img, 0))[0]
   pred = np.clip(pred, 0, 1)
