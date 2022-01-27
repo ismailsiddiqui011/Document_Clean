@@ -44,8 +44,8 @@ try:
       img = img_loader.img_loader(img)
    except:
       st.markdown('Upload a valid image')
-  st.image(img, caption = ['above'], width = 256)
   img = image_spoiler.image_spoiler(img, brightnesse, noise)
+  st.image(img, caption = ['above'], width = 256)
   pred = model.predict(np.expand_dims(img, 0))[0]
   pred = np.clip(pred, 0, 1)
   st.image(img, caption = ['below'], width = 256)
