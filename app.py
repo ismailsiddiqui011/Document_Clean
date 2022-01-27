@@ -28,6 +28,7 @@ try:
     try:
       img = st.file_uploader('Upload an Image')
       img = img_loader.img_loader(image_path)
+      st.image(img, caption = 'Input', width = 256)
     except:
       st.markdown('Upload a valid image')
 
