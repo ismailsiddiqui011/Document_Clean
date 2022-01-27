@@ -1,6 +1,3 @@
-import cv2
-from skimage.io import imread
-
 def img_loader(file):
     '''File: Path to Image'''
     def image_resize(image, width = None):
@@ -10,8 +7,7 @@ def img_loader(file):
         r = width / float(w)
         dim = (width, int(h * r))
 
-        resized = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
-        resized = cv2.resize(image, (640, 512), interpolation = cv2.INTER_AREA)
+        resized = resize(image, (640, 512), preserve_range = True)
         return resized
 
     img = imread(file)
