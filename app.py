@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.preprocessing.image import ImageDataGenerator, array_to_img 
+from tensorflow.keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array
 from tensorflow.keras.models import load_model
 import os, pickle
 from skimage.io import imread
@@ -16,6 +16,8 @@ st.title('Document Image Cleaner')
 st.image('front.png', width = 500)
 
 choice = st.selectbox('Choose one of the following', ('URL', 'Upload Image'))
+choice2 = st.selectbox('Choose the method', ('Brute Force', 'Deep Learning'))
+
 brightness = st.text_input('Enter a brightness reduction factor range(0-0.80), 0 means image is already ruined or leave the field to use random value...')
 try:
     brightness = float(brightness)
@@ -45,9 +47,12 @@ try:
    except:
       st.markdown('Upload a valid image')
   img = image_spoiler.image_spoiler(img, brightness, noise)
-  
-  pred = model.predict(np.expand_dims(img, 0))[0]
-  pred = np.clip(pred, 0, 1)
+
+  if choice2 == 'Brute Force':
+     pred, _, _ = img_to_array(brute_force(array_to_img(img)))
+  else:
+      pred = model.predict(np.expand_dims(img, 0))[0]
+      pred = np.clip(pred, 0, 1)
 
   st.image([img, pred], caption = ['Input', 'Prediction'], width = 256)
 except:
