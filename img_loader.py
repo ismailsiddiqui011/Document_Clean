@@ -9,7 +9,7 @@ def img_loader(file):
         r = width / float(w)
         dim = (width, int(h * r))
 
-        resized = resize(image, (640, 512), preserve_range = True)
+        resized = resize(image, (512, 640), preserve_range = True)
         return resized
 
     img = imread(file)
