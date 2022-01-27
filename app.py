@@ -45,10 +45,10 @@ try:
    except:
       st.markdown('Upload a valid image')
   img = image_spoiler.image_spoiler(img, brightness, noise)
-  st.image(img, caption = ['above'], width = 256)
+  
   pred = model.predict(np.expand_dims(img, 0))[0]
   pred = np.clip(pred, 0, 1)
-  st.image(img, caption = ['below'], width = 256)
+
   st.image([img, pred], caption = ['Input', 'Prediction'], width = 256)
 except:
       pass
