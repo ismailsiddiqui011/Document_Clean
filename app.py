@@ -27,7 +27,7 @@ st.image('front.png', width = 500)
   #if choice == 'Upload Image':
    #try:
 img = st.file_uploader('Upload an Image')
-img = img_loader.img_loader(image_path)
+img = img_loader.img_loader(img)
 st.image(img, caption = 'Input', width = 256)
    #except:
      # st.markdown('Upload a valid image')
