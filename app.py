@@ -8,7 +8,7 @@ from skimage.io import imread
 from PIL import Image
 import image_spoiler
 import img_loader
-import cv2
+from skimage.transform import resize
 
 model = load_model('model.h5', compile = False)
 
