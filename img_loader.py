@@ -1,3 +1,5 @@
+from skimage.io import imread
+from skimage.transform import resize
 def img_loader(file):
     '''File: Path to Image'''
     def image_resize(image, width = None):
