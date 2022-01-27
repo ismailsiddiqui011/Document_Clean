@@ -33,16 +33,15 @@ try:
 except:
     noise = False
     st.markdown('Enter a valid value, using random values now...')
-    
-try:
-  if choice == 'URL':
+
+if choice == 'URL':
     image_path = st.text_input('Enter image URL...')
     try:
       img = img_loader.img_loader(image_path)
     except:
       st.markdown('Enter a URL')
 
-  if choice == 'Upload Image':
+    if choice == 'Upload Image':
    try:
       img = st.file_uploader('Upload an Image')
       img = img_loader.img_loader(img)
@@ -62,5 +61,3 @@ try:
       pred = np.clip(pred, 0, 1)
 
   st.image([img_c, pred], caption = ['Input', 'Prediction'], width = 512)
-except:
-      pass
