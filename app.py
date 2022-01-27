@@ -47,6 +47,8 @@ try:
       img = img_loader.img_loader(img)
    except:
       st.markdown('Upload a valid image')
+  z = img.shape
+  st.markdown(str(z))
   img_c = image_spoiler.image_spoiler(img, brightness, noise)
   z = img_c.shape
   st.markdown(str(z))
