@@ -49,11 +49,9 @@ try:
    except:
       st.markdown('Upload a valid image')
   img = rgba2rgb(img)
-  z = img.shape
-  st.markdown(str(z))
+
   img_c = image_spoiler.image_spoiler(img, brightness, noise)
-  z = img_c.shape
-  st.markdown(str(z))
+
 
   if choice2 == 'Brute Force':
       img = array_to_img(img_c)
@@ -63,6 +61,6 @@ try:
       pred = model.predict(img_c/255)[0]
       pred = np.clip(pred, 0, 1)
 
-  st.image([img, pred], caption = ['Input', 'Prediction'], width = 512)
+  st.image([img_c, pred], caption = ['Input', 'Prediction'], width = 512)
 except:
       pass
