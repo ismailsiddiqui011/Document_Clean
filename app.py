@@ -58,7 +58,7 @@ try:
       pred, _, _ = brute_force.brute_force(img)
       pred = img_to_array(pred)
   else:
-      pred = model.predict(img_c/255)[0]
+      pred = model.predict(np.expand_dims(img_c, 0))[0]
       pred = np.clip(pred, 0, 1)
 
   st.image([img_c, pred], caption = ['Input', 'Prediction'], width = 512)
