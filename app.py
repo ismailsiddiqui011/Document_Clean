@@ -15,25 +15,25 @@ model = load_model('model.h5', compile = False)
 st.title('Document Image Cleaner')
 st.image('front.png', width = 500)
 
-choice = st.selectbox('Choose one of the following', ('URL', 'Upload Image'))
-try:
-  if choice == 'URL':
-    image_path = st.text_input('Enter image URL...')
-    try:
-      img = img_loader.img_loader(image_path)
-    except:
-      st.markdown('Enter a URL')
+#choice = st.selectbox('Choose one of the following', ('URL', 'Upload Image'))
+#try:
+  #if choice == 'URL':
+    #image_path = st.text_input('Enter image URL...')
+    #try:
+     # img = img_loader.img_loader(image_path)
+   # except:
+     # st.markdown('Enter a URL')
 
-  if choice == 'Upload Image':
-    try:
-      img = st.file_uploader('Upload an Image')
-      img = img_loader.img_loader(image_path)
-      st.image(img, caption = 'Input', width = 256)
-    except:
-      st.markdown('Upload a valid image')
+  #if choice == 'Upload Image':
+   #try:
+img = st.file_uploader('Upload an Image')
+img = img_loader.img_loader(image_path)
+st.image(img, caption = 'Input', width = 256)
+   #except:
+     # st.markdown('Upload a valid image')
 
-  pred = model.predict(np.expand_dims(img, 0))[0]
-  pred = np.clip(pred, 0, 1)
-  st.image([img, pred], caption = ['Input', 'Prediction'], width = 256)
-except:
-  pass
+pred = model.predict(np.expand_dims(img, 0))[0]
+pred = np.clip(pred, 0, 1)
+st.image([img, pred], caption = ['Input', 'Prediction'], width = 256)
+#except:
+  #pass
