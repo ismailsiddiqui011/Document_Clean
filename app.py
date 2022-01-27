@@ -6,11 +6,10 @@ from tensorflow.keras.models import load_model
 import os, pickle
 from skimage.io import imread
 from PIL import Image
-
+from image_spoiler import image_spoiler
+from img_loader import img_loader
 
 model = load_model('model.h5', compile = False)
-img_loader = pickle.load(open('img_loader.pkl', 'rb'))
-image_spoiler = pickle.load(open('image_spoiler.pkl', 'rb'))
 
 st.title('Document Image Cleaner')
 st.image('front.png', width = 500)
