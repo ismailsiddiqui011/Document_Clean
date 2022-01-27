@@ -9,6 +9,7 @@ from PIL import Image
 import image_spoiler
 import img_loader
 from skimage.transform import resize
+import brute_force
 
 model = load_model('model.h5', compile = False)
 
@@ -49,11 +50,11 @@ try:
   img = image_spoiler.image_spoiler(img, brightness, noise)
 
   if choice2 == 'Brute Force':
-     pred, _, _ = img_to_array(brute_force(array_to_img(img)))
+     pred, _, _ = img_to_array(brute_force.brute_force(array_to_img(img)))
   else:
       pred = model.predict(np.expand_dims(img, 0))[0]
       pred = np.clip(pred, 0, 1)
 
-  st.image([img, pred], caption = ['Input', 'Prediction'], width = 256)
+  st.image([img, pred], caption = ['Input', 'Prediction'], width = 512)
 except:
       pass
