@@ -48,6 +48,8 @@ try:
    except:
       st.markdown('Upload a valid image')
   img_c = image_spoiler.image_spoiler(img, brightness, noise)
+  z = img_c.shape
+  st.markdown(str(z))
 
   if choice2 == 'Brute Force':
       img = array_to_img(img_c)
