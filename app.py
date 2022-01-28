@@ -49,8 +49,10 @@ if choice == 'Upload Image':
 try:
     status = True
     img_c = image_spoiler.image_spoiler(img, brightness, noise)
+except:
+    pass
 
-
+try:
     if choice2 == 'Brute Force':
       img = array_to_img(img_c)
       pred, _, _ = brute_force.brute_force(img)
@@ -60,5 +62,6 @@ try:
       pred = np.clip(pred, 0, 1)
 except:
     status = False
+    pass
 if status:
     st.image([img_c, pred], caption = ['Input', 'Prediction'], width = 512)
